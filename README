@@ -1,0 +1,21 @@
+Cookie domains is a Rails plugin and Rack middleware to setting cookies in mutli-domain environment. Define domains for your applications and set correct cookie based on request hostname.
+
+It requires ActionController and sets ActionController::Base.session_options regarding the request hostname. This is useful especially when your application works on more than one domain with subdomains. Eg. if you set '.example.com' and '.example.org' as your domains, then assuming the request hostname is 'www.example.com' or 'example.com', cookie would be set for '.example.com' domain.
+
+Installation
+------------
+Cookie Domains can be installed in a Rails application as a plugin.
+
+$ script/plugin install git://github.com/ghandal/cookie_domains.git
+
+In environments/production.rb, add Cookie Domains to your middleware stack:
+
+config.middleware.use("CookieDomains", ".my-domain.com", ".another-domain.org")
+
+where 'my-domain.com' and 'another-domain.org' are domains handled by your Rails application.
+You can turn on Cookie Domains in other environments for testing purposes as well.
+
+Contributors
+------------
+    * Jakub Kosiński (maintainer)
+
